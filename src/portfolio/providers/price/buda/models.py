@@ -21,3 +21,17 @@ class _BudaMarketResponse(BaseModel):
 
 class BudaMarketsResponse(BaseModel):
     markets: list[_BudaMarketResponse]
+
+
+class _BudaMarketTickerResponse(BaseModel):
+    market_id: str
+    last_price: list
+    min_ask: list
+    max_bid: list
+    volume: list
+    price_variation_24h: float
+    price_variation_7d: float
+
+
+class BudaMarketTickerResponse(BaseModel):
+    ticker: _BudaMarketTickerResponse

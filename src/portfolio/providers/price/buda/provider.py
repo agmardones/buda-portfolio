@@ -1,6 +1,5 @@
 from decimal import Decimal
 from src.portfolio.providers.price.buda.client import BudaClient
-from src.shared.types import PortfolioType
 from src.portfolio.providers.price.interface import PriceProviderInterface
 
 
@@ -11,7 +10,5 @@ class BudaPriceProvider(PriceProviderInterface):
     def get_valid_markets(self) -> list[str]:
         return [market.id.lower() for market in self.client.get_markets().markets]
 
-    def get_portfolio_value(
-        self, portfolio: PortfolioType, target_currency: str
-    ) -> Decimal:
-        return Decimal(0)
+    def get_market_price(self, market: str) -> Decimal:
+        return Decimal(self.client.get_market_price(market).ticker.last_price[0])
