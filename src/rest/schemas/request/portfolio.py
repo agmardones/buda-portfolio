@@ -1,7 +1,8 @@
-from decimal import Decimal
 from pydantic import BaseModel
+
+from src.shared.types import PortfolioType
 
 
 class PortfolioValueRequest(BaseModel):
-    portfolio: dict[str, Decimal]
+    portfolio: PortfolioType
     fiat_currency: str
