@@ -12,7 +12,11 @@ router = APIRouter()
 @router.post("/portfolio/value")
 def portfolio_value(request: PortfolioValueRequest) -> PortfolioValueResponse:
     service = PortfolioService(price_provider=BudaPriceProvider())
-    service.validate_portfolio(
+    service.validate_portfolio_assets(
         portfolio=request.portfolio, target_currency=request.fiat_currency
     )
-    return PortfolioValueResponse(value=1000)
+    return PortfolioValueResponse(
+        value=service.get_portfolio_value(
+            portfolio=request.portfolio, target_currency=request.fiat_currency
+        )
+    )
