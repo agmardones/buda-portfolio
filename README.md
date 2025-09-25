@@ -2,6 +2,8 @@
 
 A FastAPI service for calculating cryptocurrency portfolio values using Buda.com price data.
 
+You can see it live at: https://buda-portfolio.onrender.com
+
 ## Features
 
 - Portfolio value calculation
